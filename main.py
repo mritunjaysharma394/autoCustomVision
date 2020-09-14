@@ -34,14 +34,14 @@ image_list = []
 
 for image_num in range(1, 11):
     file_name = "hemlock_{}.jpg".format(image_num)
-    fd = requests.get(base_image_url + "images/Hemlock/" + file_name)
-    image_file = io.BytesIO(fd.read())
+    response = requests.get(base_image_url + "images/Hemlock/" + file_name)
+    image_file = io.BytesIO(response.content())
     image_list.append(ImageFileCreateEntry(name=file_name, contents=image_file.read(), tag_ids=[hemlock_tag.id]))
 
 for image_num in range(1, 11):
     file_name = "japanese_cherry_{}.jpg".format(image_num)
-    fd = requests.get(base_image_url + "images/Japanese Cherry/" + file_name)
-    image_file = io.BytesIO(fd.read())
+    response = requests.get(base_image_url + "images/Japanese Cherry/" + file_name)
+    image_file = io.BytesIO(response.content())
     image_list.append(ImageFileCreateEntry(name=file_name, contents=image_file.read(), tag_ids=[cherry_tag.id]))
 
 upload_result = trainer.create_images_from_files(project.id, ImageFileCreateBatch(images=image_list))
