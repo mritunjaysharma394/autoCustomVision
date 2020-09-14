@@ -23,8 +23,7 @@ project = trainer.create_project("My New Project")
 hemlock_tag = trainer.create_tag(project.id, "Hemlock")
 cherry_tag = trainer.create_tag(project.id, "Japanese Cherry")
 
-base_image_url = "https://github.com/" + os.environ["GITHUB_REPOSITORY"] +"/tree/master/"
-print (base_image_url)
+base_image_url = "https://github.com/" + os.environ["GITHUB_REPOSITORY"] +"/blob/master/"
 
 print("Adding images...")
 
