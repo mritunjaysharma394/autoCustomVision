@@ -1,0 +1,17 @@
+name: "Automating Azure Custom Vision Training and Prediction"
+description: "Get your model ready using this action"
+author: "Mritunjay Sharma"
+inputs:
+  myInput:
+    description: "Provide the tags for classification"
+    required: true
+    default: "zeroinputs"
+outputs:
+  myOutput:
+    description: "Output from the action"
+runs:
+  using: "docker"
+  image: "Dockerfile"
+branding:
+  icon: 'box'
+  color: 'blue'
