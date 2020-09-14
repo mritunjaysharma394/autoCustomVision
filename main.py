@@ -1,6 +1,9 @@
 from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
 from azure.cognitiveservices.vision.customvision.training.models import ImageFileCreateBatch, ImageFileCreateEntry
 from msrest.authentication import ApiKeyCredentials
+from PIL import Image
+import requests
+import io
 import os
 
 ENDPOINT = os.environ["INPUT_ENDPOINT"]
@@ -31,13 +34,15 @@ image_list = []
 
 for image_num in range(1, 11):
     file_name = "hemlock_{}.jpg".format(image_num)
-    with open(base_image_url + "images/Hemlock/" + file_name, "rb") as image_contents:
-        image_list.append(ImageFileCreateEntry(name=file_name, contents=image_contents.read(), tag_ids=[hemlock_tag.id]))
+    fd = requests.get(base_image_url + "images/Hemlock/" + file_name)
+    image_file = io.BytesIO(fd.read())
+    image_list.append(ImageFileCreateEntry(name=file_name, contents=image_file.read(), tag_ids=[hemlock_tag.id]))
 
 for image_num in range(1, 11):
     file_name = "japanese_cherry_{}.jpg".format(image_num)
-    with open(base_image_url + "images/Japanese Cherry/" + file_name, "rb") as image_contents:
-        image_list.append(ImageFileCreateEntry(name=file_name, contents=image_contents.read(), tag_ids=[cherry_tag.id]))
+    fd = requests.get(base_image_url + "images/Japanese Cherry/" + file_name)
+    image_file = io.BytesIO(fd.read())
+    image_list.append(ImageFileCreateEntry(name=file_name, contents=image_file.read(), tag_ids=[cherry_tag.id]))
 
 upload_result = trainer.create_images_from_files(project.id, ImageFileCreateBatch(images=image_list))
 if not upload_result.is_batch_successful:
