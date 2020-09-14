@@ -1,11 +1,21 @@
 name: "Automating Azure Custom Vision Training and Prediction"
 description: "Get your model ready using this action"
 author: "Mritunjay Sharma"
+
 inputs:
-  myInput:
-    description: "Provide the tags for classification"
+  endpoint:
+    description: "The endpoint required to connect with Azure Custom Vision"
     required: true
-    default: "zeroinputs"
+  trainingKey: 
+    description: "The training key for Azure Custom Vision Service"
+    required: true
+  predictionKey:
+    description: "The prediction key for Azure Custom Vision Service"
+    required: true
+  predictionResourceid:
+    description: "The Prediction Source ID for Azure Custom Vision Service"
+    required: true
+
 outputs:
   myOutput:
     description: "Output from the action"

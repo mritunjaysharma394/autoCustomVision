@@ -1,13 +1,14 @@
 from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
 from azure.cognitiveservices.vision.customvision.training.models import ImageFileCreateBatch, ImageFileCreateEntry
 from msrest.authentication import ApiKeyCredentials
+import os
 
-ENDPOINT = "<your API endpoint>"
+ENDPOINT = os.environ["INPUT_ENDPOINT"]
 
 # Replace with a valid key
-training_key = "<your training key>"
-prediction_key = "<your prediction key>"
-prediction_resource_id = "<your prediction resource id>"
+training_key = os.environ["INPUT_TRAININGKEY"]
+prediction_key = os.environ["INPUT_PREDICTIONKEY"]
+prediction_resource_id = os.environ["INPUT_PREDICTIONRESOURCEID"]
 
 publish_iteration_name = "classifyModel"
 
@@ -22,7 +23,7 @@ project = trainer.create_project("My New Project")
 hemlock_tag = trainer.create_tag(project.id, "Hemlock")
 cherry_tag = trainer.create_tag(project.id, "Japanese Cherry")
 
-base_image_url = "<path to repo directory>/cognitive-services-python-sdk-samples/samples/vision/"
+base_image_url = "https://raw.githubusercontent.com/" + os.environ["GITHUB_REPOSITORY"] +"/master/"
 
 print("Adding images...")
 
