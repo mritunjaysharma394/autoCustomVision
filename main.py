@@ -71,7 +71,7 @@ from msrest.authentication import ApiKeyCredentials
 prediction_credentials = ApiKeyCredentials(in_headers={"Prediction-key": prediction_key})
 predictor = CustomVisionPredictionClient(ENDPOINT, prediction_credentials)
 
-response = requests.get(base_image_url + "images/Test/test_image.jpg")
+response = requests.get(base_image_url + "Test/test_image.jpg")
 image_file = io.BytesIO(response.content)
 results = predictor.classify_image(
     project.id, publish_iteration_name, image_file.read())
