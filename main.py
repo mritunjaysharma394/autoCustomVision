@@ -29,10 +29,11 @@ print (tags)
 #List of tag variables
 tag_list = [] 
 
+num_tags = len(tags)
 #Make tags in the new project
-for tag in tags:
-    print(tag)
-    trainer.create_tag(project.id, tag)
+for i in range(num_tags):
+    print(tags[i])
+    trainer.create_tag(project.id, tags[i])
 
 # Make two tags in the new project
 #hemlock_tag = trainer.create_tag(project.id, "Hemlock")
