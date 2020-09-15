@@ -30,7 +30,8 @@ tag_list = []
 
 #Make tags in the new project
 for tag in tags:
-    trainer.create_tag(project.id, tag)
+    print(tag)
+    #trainer.create_tag(project.id, tag)
 
 # Make two tags in the new project
 #hemlock_tag = trainer.create_tag(project.id, "Hemlock")
