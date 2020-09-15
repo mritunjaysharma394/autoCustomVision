@@ -30,7 +30,7 @@ tag_list = []
 
 #Make tags in the new project
 for tag in tags:
-    tag_list.append(trainer.create_tag(project.id, tag))
+    trainer.create_tag(project.id, tag)
 
 # Make two tags in the new project
 #hemlock_tag = trainer.create_tag(project.id, "Hemlock")
@@ -49,7 +49,7 @@ for i in range (num_tags):
         #file_name = "hemlock_{}.jpg".format(image_num)
         response = requests.get(base_image_url + "images/"+tag[i]+"/" + file_name)
         image_file = io.BytesIO(response.content)
-        image_list.append(ImageFileCreateEntry(name=file_name, contents=image_file.read(), tag_ids=[tag_list[i].id]))
+        image_list.append(ImageFileCreateEntry(name=file_name, contents=image_file.read(), tag_ids=[tag[i].id]))
 
 '''for image_num in range(1, 11):
     file_name = "japanese_cherry_{}.jpg".format(image_num)
