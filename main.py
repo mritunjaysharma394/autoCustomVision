@@ -6,7 +6,7 @@ import requests
 import io
 import os
 import re
-
+import ast
 ENDPOINT = os.environ["INPUT_ENDPOINT"]
 
 # Replace with a valid key
@@ -23,15 +23,16 @@ trainer = CustomVisionTrainingClient(ENDPOINT, credentials)
 print ("Creating project...")
 project = trainer.create_project("My New Project")
 
-tags = os.environ["INPUT_TAGS"]
+tags = ast.literal_eval(os.environ["INPUT_TAGS"])
 
+print (tags)
 #List of tag variables
 tag_list = [] 
 
 #Make tags in the new project
 for tag in tags:
     print(tag)
-    #trainer.create_tag(project.id, tag)
+    trainer.create_tag(project.id, tag)
 
 # Make two tags in the new project
 #hemlock_tag = trainer.create_tag(project.id, "Hemlock")
