@@ -6,7 +6,7 @@ jobs:
     steps:
     - name: Train the model
       id: model
-      uses: mritunjaysharma394/autoCustomVision@master
+      uses: mritunjaysharma394/autoCustomVision@dev
       with:
         tags: "[Hemlock, Japanese Cherry]"
         endpoint: ${{ secrets.AZURE_ENDPOINT }}
