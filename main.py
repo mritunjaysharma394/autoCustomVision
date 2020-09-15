@@ -23,7 +23,7 @@ trainer = CustomVisionTrainingClient(ENDPOINT, credentials)
 print ("Creating project...")
 project = trainer.create_project("My New Project")
 
-tags = ast.literal_eval(os.environ["INPUT_TAGS"])
+tags = os.environ["INPUT_TAGS"]
 
 print (tags)
 #List of tag variables
