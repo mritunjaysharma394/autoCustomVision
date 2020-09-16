@@ -8,7 +8,7 @@ jobs:
       id: model
       uses: mritunjaysharma394/autoCustomVision@dev
       with:
-        tags: "['Hemlock', 'Japanese Cherry']"
+        tags: "[Hemlock, Japanese Cherry]"
         endpoint: ${{ secrets.AZURE_ENDPOINT }}
         trainingKey: ${{ secrets.AZURE_TRAINING_KEY }}
         predictionKey: ${{ secrets.AZURE_PREDICTION_KEY }}
