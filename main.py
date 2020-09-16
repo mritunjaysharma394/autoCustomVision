@@ -29,44 +29,28 @@ tagsVar= os.environ["INPUT_TAGSVAR"]
 tags_str = (str(tags).strip('[]')).split(",")
 tagsVar_str = (str(tagsVar).strip('[]')).split(",")
 
-print (tags_str)
+
 #List of tag variables
 tag_list = [] 
 
 num_tags = len(tags_str)
-print(num_tags)
+
 #Make tags in the new project
 for tag in tags_str:
-    print(tag)
     tag_list.append(trainer.create_tag(project.id, tag))
-
-# Make two tags in the new project
-#hemlock_tag = trainer.create_tag(project.id, "Hemlock")
-#cherry_tag = trainer.create_tag(project.id, "Japanese Cherry")
 
 base_image_url = "https://github.com/" + os.environ["GITHUB_REPOSITORY"] +"/raw/master/"
 
 print("Adding images...")
 
 image_list = []
-#num_tags = len(tags)
 
 for i in range (num_tags):
     for image_num in range(1, 11):
         file_name = tagsVar_str[i]+"_{}.jpg".format(image_num)
-        print(file_name)
-        #file_name = "hemlock_{}.jpg".format(image_num)
-        print((base_image_url + "images/"+tags_str[i]+"/" + file_name))
         response = requests.get(base_image_url + "images/"+tags_str[i]+"/" + file_name)
         image_file = io.BytesIO(response.content)
         image_list.append(ImageFileCreateEntry(name=file_name, contents=image_file.read(), tag_ids=[tag_list[i].id]))
-
-'''for image_num in range(1, 11):
-    file_name = "japanese_cherry_{}.jpg".format(image_num)
-    response = requests.get(base_image_url + "images/Japanese Cherry/" + file_name)
-    image_file = io.BytesIO(response.content)
-    image_list.append(ImageFileCreateEntry(name=file_name, contents=image_file.read(), tag_ids=[cherry_tag.id]))
-'''
 
 upload_result = trainer.create_images_from_files(project.id, ImageFileCreateBatch(images=image_list))
 if not upload_result.is_batch_successful:
