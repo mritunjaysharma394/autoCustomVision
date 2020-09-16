@@ -17,7 +17,10 @@ Step 3: Copy the below workflow file:
 
 ```yaml
 name: Auto Custom Vision Classifier
-on: [push]
+on:
+  push:
+    paths:
+    - '**.yml'
 jobs:
   build_model:
     runs-on: ubuntu-latest
