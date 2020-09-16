@@ -6,6 +6,9 @@ inputs:
   tags:
     description: "Allow user to enter tags for classification"
     required: true
+  tagsVar:
+    description: "The file name patter used"
+    requried: true
   endpoint:
     description: "The endpoint required to connect with Azure Custom Vision"
     required: true
