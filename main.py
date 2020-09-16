@@ -25,7 +25,8 @@ project = trainer.create_project("My New Project")
 
 tags = os.environ["INPUT_TAGS"]
 
-tags_str = str(tags).strip('[]')
+tags_str = (str(tags).strip('[]')).split(",")
+
 print (tags_str)
 #List of tag variables
 tag_list = [] 
