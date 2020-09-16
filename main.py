@@ -56,8 +56,8 @@ for i in range (num_tags):
         file_name = tagsVar_str[i]+"_{}.jpg".format(image_num)
         print(file_name)
         #file_name = "hemlock_{}.jpg".format(image_num)
-        print((base_image_url + "images/"+tag[i]+"/" + file_name))
-        response = requests.get(base_image_url + "images/"+tag[i]+"/" + file_name)
+        print((base_image_url + "images/"+tags_str[i]+"/" + file_name))
+        response = requests.get(base_image_url + "images/"+tags_str[i]+"/" + file_name)
         image_file = io.BytesIO(response.content)
         image_list.append(ImageFileCreateEntry(name=file_name, contents=image_file.read(), tag_ids=[tag_list[i].id]))
 
