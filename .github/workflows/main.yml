@@ -1,13 +1,18 @@
 name: Auto Custom Vision Classifier
-on: [push]
+on:
+  push:
+    paths:
+    - '**.yml'
 jobs:
   build_model:
     runs-on: ubuntu-latest
     steps:
     - name: Train the model
       id: model
-      uses: mritunjaysharma394/autoCustomVision@master
+      uses: mritunjaysharma394/autoCustomVision@dev
       with:
+        tags: "[Hemlock,Japanese Cherry]"
+        tagsVar: "[hemlock,japanese_cherry]"
         endpoint: ${{ secrets.AZURE_ENDPOINT }}
         trainingKey: ${{ secrets.AZURE_TRAINING_KEY }}
         predictionKey: ${{ secrets.AZURE_PREDICTION_KEY }}
