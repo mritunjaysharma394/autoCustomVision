@@ -30,10 +30,10 @@ print (tags_str)
 #List of tag variables
 tag_list = [] 
 
-num_tags = len(tags)
+num_tags = len(tags_str)
 print(num_tags)
 #Make tags in the new project
-for tag in tags:
+for tag in tags_str:
     print(tag)
     trainer.create_tag(project.id, tag)
 
@@ -46,7 +46,7 @@ base_image_url = "https://github.com/" + os.environ["GITHUB_REPOSITORY"] +"/raw/
 print("Adding images...")
 
 image_list = []
-num_tags = len(tags)
+#num_tags = len(tags)
 
 for i in range (num_tags):
     for image_num in range(1, 11):
@@ -55,7 +55,7 @@ for i in range (num_tags):
         #file_name = "hemlock_{}.jpg".format(image_num)
         response = requests.get(base_image_url + "images/"+tag[i]+"/" + file_name)
         image_file = io.BytesIO(response.content)
-        image_list.append(ImageFileCreateEntry(name=file_name, contents=image_file.read(), tag_ids=[tags[i].id]))
+        image_list.append(ImageFileCreateEntry(name=file_name, contents=image_file.read(), tag_ids=[tags_str[i].id]))
 
 '''for image_num in range(1, 11):
     file_name = "japanese_cherry_{}.jpg".format(image_num)
