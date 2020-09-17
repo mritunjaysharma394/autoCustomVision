@@ -21,7 +21,7 @@ Save the above credentials with SECRET_NAME as: `AZURE_ENDPOINT`, `AZURE_TRAININ
 
 ### Step 3:
 
-Upload the image dataset and Test File in the Repository. Afte pushing the changes, Copy the below workflow file and push it:
+Upload the image dataset and Test File in the Repository. After pushing the changes, Copy the below workflow file and push it:
 
 ```yaml
 name: Auto Custom Vision Classifier
