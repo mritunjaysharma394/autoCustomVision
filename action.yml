@@ -1,5 +1,5 @@
-name: "Automating Azure Custom Vision Training and Prediction"
-description: "Get your model ready using this action"
+name: "Automating Image Classification with Microsoft Azure Custom Vision Training and Prediction"
+description: "Get your model published using this action"
 author: "Mritunjay Sharma"
 
 inputs:
