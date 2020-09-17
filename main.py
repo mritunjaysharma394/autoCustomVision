@@ -25,6 +25,7 @@ project = trainer.create_project("My New Project")
 
 tags = os.environ["INPUT_TAGS"]
 tagsVar= os.environ["INPUT_TAGSVAR"]
+trainSize = os.environ["INPUT_TRAINSIZE"]
 
 tags_str = (str(tags).strip('[]')).split(",")
 tagsVar_str = (str(tagsVar).strip('[]')).split(",")
@@ -46,14 +47,28 @@ print("Adding images...")
 image_list = []
 
 for i in range (num_tags):
-    for image_num in range(1, 6):
+    for image_num in range(1, trainSize+1):
         file_name = tagsVar_str[i]+"{}.jpg".format(image_num)
         response = requests.get(base_image_url + "images/"+tags_str[i]+"/" + file_name)
         print(base_image_url + "images/"+tags_str[i]+"/" + file_name)
         image_file = io.BytesIO(response.content)
         image_list.append(ImageFileCreateEntry(name=file_name, contents=image_file.read(), tag_ids=[tag_list[i].id]))
 
-upload_result = trainer.create_images_from_files(project.id, ImageFileCreateBatch(images=image_list))
+
+if (len(image_list)>=64):
+    # Create chunks of 64 images
+    def chunks(l, n):
+        for i in range(0, len(l), n):
+            yield l[i:i + n]
+    batchedImages = chunks(image_list, 64)
+
+    # Upload the images in batches of 64 to the Custom Vision Service
+    for batchOfImages in batchedImages:
+        upload_result = trainer.create_images_from_files(project.id, ImageFileCreateBatch(images=batchOfImages))
+
+else:
+    upload_result = trainer.create_images_from_files(project.id, ImageFileCreateBatch(images=image_list))
+
 if not upload_result.is_batch_successful:
     print("Image batch upload failed.")
     for image in upload_result.images:

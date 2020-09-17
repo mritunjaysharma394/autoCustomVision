@@ -9,6 +9,9 @@ inputs:
   tagsVar:
     description: "The file name patter used"
     requried: true
+  trainSize:
+    description: "The training size of each tag"
+    required: true
   endpoint:
     description: "The endpoint required to connect with Azure Custom Vision"
     required: true

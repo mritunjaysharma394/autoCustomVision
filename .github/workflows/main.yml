@@ -13,6 +13,7 @@ jobs:
       with:
         tags: "[Hemlock,Japanese Cherry]"
         tagsVar: "[hemlock_,japanese_cherry_]"
+        trainSize: "10"
         endpoint: ${{ secrets.AZURE_ENDPOINT }}
         trainingKey: ${{ secrets.AZURE_TRAINING_KEY }}
         predictionKey: ${{ secrets.AZURE_PREDICTION_KEY }}
