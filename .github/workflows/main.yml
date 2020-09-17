@@ -9,7 +9,7 @@ jobs:
     steps:
     - name: Train the model
       id: model
-      uses: mritunjaysharma394/autoCustomVision@dev
+      uses: mritunjaysharma394/autoCustomVision@master
       with:
         tags: "[Hemlock,Japanese Cherry]"
         tagsVar: "[hemlock,japanese_cherry]"
