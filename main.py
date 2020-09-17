@@ -49,6 +49,7 @@ for i in range (num_tags):
     for image_num in range(1, 11):
         file_name = tagsVar_str[i]+"{}.jpg".format(image_num)
         response = requests.get(base_image_url + "images/"+tags_str[i]+"/" + file_name)
+        print(base_image_url + "images/"+tags_str[i]+"/" + file_name)
         image_file = io.BytesIO(response.content)
         image_list.append(ImageFileCreateEntry(name=file_name, contents=image_file.read(), tag_ids=[tag_list[i].id]))
 
