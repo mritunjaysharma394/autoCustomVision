@@ -16,7 +16,6 @@ Save the above credentials with SECRET_NAME as: `AZURE_ENDPOINT`, `AZURE_TRAININ
 Step 3: Copy the below workflow file:
 
 ```yaml
-  
 name: Auto Custom Vision Classifier
 on:
   push:
@@ -26,9 +25,8 @@ jobs:
   build_model:
     runs-on: ubuntu-latest
     steps:
-    - name: Train the model
-      id: model
-      uses: mritunjaysharma394/autoCustomVision@master
+    - name: Automating Image Classification with Microsoft Azure Custom Vision Training and Prediction
+      uses: mritunjaysharma394/autoCustomVision@v1.0
       with:
         tags: "[Hemlock,Japanese Cherry]" # Rename it according to the folder name under images/ which will also be our name to the tags
         tagsVar: "[hemlock_,japanese_cherry_]" # Rename it according to the symmetry of file names under images/tag/ 
