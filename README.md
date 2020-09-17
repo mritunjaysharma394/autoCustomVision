@@ -16,6 +16,7 @@ Save the above credentials with SECRET_NAME as: `AZURE_ENDPOINT`, `AZURE_TRAININ
 Step 3: Copy the below workflow file:
 
 ```yaml
+  
 name: Auto Custom Vision Classifier
 on:
   push:
@@ -29,8 +30,9 @@ jobs:
       id: model
       uses: mritunjaysharma394/autoCustomVision@master
       with:
-        tags: "[Hemlock,Japanese Cherry]"
-        tagsVar: "[hemlock,japanese_cherry]"
+        tags: "[Hemlock,Japanese Cherry]" # Rename it according to the folder name under images/ which will also be our name to the tags
+        tagsVar: "[hemlock_,japanese_cherry_]" # Rename it according to the symmetry of file names under images/tag/ 
+        trainSize: "10" # Train Size of Each Tag
         endpoint: ${{ secrets.AZURE_ENDPOINT }}
         trainingKey: ${{ secrets.AZURE_TRAINING_KEY }}
         predictionKey: ${{ secrets.AZURE_PREDICTION_KEY }}
