@@ -46,7 +46,7 @@ print("Adding images...")
 image_list = []
 
 for i in range (num_tags):
-    for image_num in range(1, 11):
+    for image_num in range(1, 6):
         file_name = tagsVar_str[i]+"{}.jpg".format(image_num)
         response = requests.get(base_image_url + "images/"+tags_str[i]+"/" + file_name)
         print(base_image_url + "images/"+tags_str[i]+"/" + file_name)
