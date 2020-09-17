@@ -7,9 +7,8 @@ jobs:
   build_model:
     runs-on: ubuntu-latest
     steps:
-    - name: Train the model
-      id: model
-      uses: mritunjaysharma394/autoCustomVision@master
+    - name: Automating Image Classification with Microsoft Azure Custom Vision Training and Prediction
+      uses: mritunjaysharma394/autoCustomVision@v1.0
       with:
         tags: "[Hemlock,Japanese Cherry]"
         tagsVar: "[hemlock_,japanese_cherry_]"
