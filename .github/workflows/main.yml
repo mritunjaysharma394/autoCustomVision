@@ -12,7 +12,7 @@ jobs:
       uses: mritunjaysharma394/autoCustomVision@master
       with:
         tags: "[Hemlock,Japanese Cherry]"
-        tagsVar: "[hemlock,japanese_cherry]"
+        tagsVar: "[hemlock_,japanese_cherry_]"
         endpoint: ${{ secrets.AZURE_ENDPOINT }}
         trainingKey: ${{ secrets.AZURE_TRAINING_KEY }}
         predictionKey: ${{ secrets.AZURE_PREDICTION_KEY }}
