@@ -25,7 +25,7 @@ project = trainer.create_project("My New Project")
 
 tags = os.environ["INPUT_TAGS"]
 tagsVar= os.environ["INPUT_TAGSVAR"]
-trainSize = os.environ["INPUT_TRAINSIZE"]
+trainSize = int(os.environ["INPUT_TRAINSIZE"])
 
 tags_str = (str(tags).strip('[]')).split(",")
 tagsVar_str = (str(tagsVar).strip('[]')).split(",")
